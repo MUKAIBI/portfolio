@@ -60,7 +60,7 @@ export default {
 
   webfontloader: {
     google: {
-      families: ['Ubuntu:wght@400,700&display=swap'],
+      families: ['Marcellus', 'Shippori+Mincho:wght@400;700&display=swap'],
     },
   },
 

@@ -47,7 +47,7 @@
   }
 
   &__title {
-    font-family: $font-ubuntu;
+    font-family: $font-marcellus;
     font-size: fz(40);
     margin-bottom: 0.25em;
   }

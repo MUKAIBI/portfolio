@@ -2,12 +2,12 @@
 // Color Settings
 // -------------------------------------------
 // base
-$base-color-primary: #fff;
+$base-color-primary: #ffffff;
 $base-color-secondary: #fafafa;
 
 // text color
 $text-color-primary: #010101;
-$text-color-secondary: #fff;
+$text-color-secondary: #ffffff;
 
 // key
 $key-color-black: #010101;
@@ -18,10 +18,9 @@ $color-body-background: $base-color-primary;
 // -------------------------------------------
 // Typeface Settings
 // -------------------------------------------
-$font-base: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'Osaka',
-  'メイリオ', 'Meiryo', 'ＭＳ Ｐゴシック', 'MS P Gothic', sans-serif;
+$font-base: 'Shippori Mincho', sans-serif;
 
-$font-ubuntu: 'Ubuntu', sans-serif;
+$font-marcellus: 'Marcellus', sans-serif;
 
 // -------------------------------------------
 // Break Points

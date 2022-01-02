@@ -3,7 +3,7 @@
     <div class="headerContainer">
       <!-- ロゴ -->
       <component :is="isTopPage ? 'h1' : 'p'" class="logo">
-        <nuxt-link to="/">My Portfolio</nuxt-link>
+        <nuxt-link to="/">MUKAIBI</nuxt-link>
       </component>
 
       <!-- メニュー -->
@@ -53,7 +53,7 @@ export default {
 
 .logo {
   color: $text-color-primary;
-  font-family: $font-ubuntu;
+  font-family: $font-marcellus;
   font-size: fz(18);
   font-weight: bold;
   letter-spacing: 0;
@@ -69,7 +69,7 @@ export default {
   margin-right: -0.75em;
 
   &__link {
-    font-family: $font-ubuntu;
+    font-family: $font-marcellus;
     font-weight: bold;
     text-transform: capitalize;
     line-height: 64px;
