@@ -1,95 +1,80 @@
 <template>
-  <div class="child">
-    <div class="childMainVisual">
-      <div class="container container--lg">
-        <h1 class="childMainVisual__title">Works</h1>
-        <p>成果物をご紹介します。</p>
-      </div>
-    </div>
-
-    <div class="container">
-      <ol class="row works">
+  <section class="section">
+    <div class="section__wrap">
+      <h1 class="headline2">Works</h1>
+      <ul class="row works">
         <li v-for="work in works.contents" :key="work.id" class="works__item">
           <nuxt-link :to="`/works/${work.id}/`" class="works__inner">
-            <figure class="works__image">
-              <img
-                :width="work.thumbnail.width"
-                :height="work.thumbnail.height"
-                :src="work.thumbnail.url"
-                :alt="work.title"
-              />
-            </figure>
+            <div class="works__image">
+              <picture>
+                <source 
+                  :width="work.thumbnail.width"
+                  :height="work.thumbnail.height"
+                  :srcset="work.thumbnail.url + '?fm=webp'"
+                  type="image/webp"
+                >
+                <img
+                  :width="work.thumbnail.width"
+                  :height="work.thumbnail.height"
+                  :src="work.thumbnail.url"
+                  :alt="work.title"
+                />
+              </picture>
+            </div>
             <div class="works__text">
               <p class="works__name">{{ work.title }}</p>
               <p class="works__date">
                 <time
                   :datetime="work.release"
-                  v-text="$dateFns.format(new Date(work.release), 'yyyy.MM.dd')"
+                  v-text="$dateFns.format(new Date(work.release), 'yyyy.MM')"
                 />
               </p>
             </div>
           </nuxt-link>
         </li>
-      </ol>
+      </ul>
     </div>
-  </div>
+  </section>
 </template>
 
 <style lang="scss" scoped>
-.childMainVisual {
-  text-align: center;
-  padding: 5em 0;
-  background-color: $base-color-secondary;
-  margin-bottom: 2.5em;
-
-  @include mq() {
-    margin-bottom: 5em;
-  }
-
-  &__title {
-    font-family: $font-marcellus;
-    font-size: fz(40);
-    margin-bottom: 0.25em;
-  }
-}
-
 .works {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
   list-style: none;
-
   &__item {
     width: 100%;
-
     @include mq() {
       width: calc((100% - 2.5em) / 2);
     }
   }
-
   &__item + &__item {
     margin-top: 1.5em;
-
     @include mq() {
       margin: 0;
     }
   }
-
   &__inner {
     display: block;
   }
-
   &__image {
-    margin-bottom: 0.5em;
-
+    margin-bottom: 1em;
     img {
       width: 100%;
     }
   }
-
   &__name {
     font-weight: bold;
   }
-
   &__date {
-    font-size: fz(14);
+    font-size: rem(14);
+  }
+  a {
+    display: block;
+    &:hover {
+      filter: grayscale(100%);
+    }
   }
 }
 </style>
@@ -102,6 +87,43 @@ export default {
     })
     return {
       works,
+    }
+  },
+  data() {
+    return {
+      title: 'Works | MUKAIBI'
+    }
+  },
+  head() {
+    return {
+      title: this.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'MUKAIBI(ムカイビ)の関わった仕事を掲載しています。'
+        },
+        {
+          hid: 'og:type',
+          property: 'og:type',
+          content: 'article',
+        },
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: 'https://mukaibi.com/works',
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: this.title,
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: 'MUKAIBI(ムカイビ)の関わった仕事を掲載しています。',
+        }
+      ]
     }
   },
 }

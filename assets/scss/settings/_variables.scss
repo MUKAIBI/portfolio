@@ -1,19 +1,41 @@
-// -------------------------------------------
-// Color Settings
-// -------------------------------------------
-// base
-$base-color-primary: #ffffff;
-$base-color-secondary: #fafafa;
+@charset "UTF-8";
 
-// text color
-$text-color-primary: #010101;
-$text-color-secondary: #ffffff;
+/* Breakpoints
+================================================== */
+$breakpoints: (
+  'sm': 480px,
+  'md': 768px,
+  'lg': 1024px,
+  'xl': 1200px,
+  'xxl': 1440px,
+) !default;
 
-// key
-$key-color-black: #010101;
 
-// background
-$color-body-background: $base-color-primary;
+/* Color
+================================================== */
+// Palette
+$white: #ffffff;
+$gray-100: #fafafa;
+$gray-200: #e0e0e0;
+// $gray-300: #fafafa;
+// $gray-400: #fafafa;
+// $gray-500: #fafafa;
+// $gray-600: #fafafa;
+// $gray-700: #fafafa;
+// $gray-800: #fafafa;
+// $gray-900: #fafafa;
+$black: #222222;
+
+
+// Background
+$base-color-primary: $white;
+$base-color-secondary: $gray-200;
+$accent-color-primary: $black;
+
+// Text
+$text-color-primary: $black;
+$text-color-secondary: $white;
+
 
 // -------------------------------------------
 // Typeface Settings
@@ -22,13 +44,5 @@ $font-base: 'Shippori Mincho', sans-serif;
 
 $font-marcellus: 'Marcellus', sans-serif;
 
-// -------------------------------------------
-// Break Points
-// -------------------------------------------
-$breakpoints: (
-  'sm': 480px,
-  'md': 768px,
-  'lg': 1024px,
-  'xl': 1200px,
-  'xxl': 1440px,
-) !default;
+// Transition
+$base-transition: background .15s ease-out, color .15s ease-out, transform .15s ease-out, opacity .15s ease-out, top .15s ease-out, right .15s ease-out, bottom .15s ease-out, left .15s ease-out, visibility .15s ease-out, filter .15s ease-out;

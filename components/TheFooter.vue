@@ -1,8 +1,10 @@
 <template>
   <footer class="footer">
-    <p class="copyright">
-      <small>©️MUKAIBI</small>
-    </p>
+    <div class="footer__wrap">
+      <p class="footer__copyright">
+        &copy; MUKAIBI
+      </p>
+    </div>
   </footer>
 </template>
 
@@ -10,11 +12,13 @@
 .footer {
   padding: 1em 0;
   background-color: $base-color-secondary;
-}
-
-.copyright {
-  font-size: fz(14);
-  font-family: $font-marcellus;
-  text-align: center;
+  &__wrap {
+    width: 90%;
+    margin: 0 auto;
+  }
+  &__copyright {
+    font-family: $font-marcellus;
+    font-size: rem(14);
+  }
 }
 </style>

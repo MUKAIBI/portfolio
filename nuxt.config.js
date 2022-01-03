@@ -4,18 +4,27 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'portfolio',
+    title: 'MUKAIBI',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'ja'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      { hid: 'description', name: 'description', content: '静岡を拠点にWeb制作を手掛けているMUKAIBIのWebサイトです。' },
+      { hid: 'og:locale', property: 'og:locale', content: 'ja_JP' },
+      { hid: 'og:type', property: 'og:type', content: 'website' },
+      { hid: 'og:url', property: 'og:url', content: 'https://mukaibi.com' },
+      { hid: 'og:site_name', property: 'og:site_name', content: 'MUKAIBI' },
+      { hid: 'og:title', property: 'og:title', content: 'MUKAIBI' },
+      { hid: 'og:description', property: 'og:description', content: '静岡を拠点にWeb制作を手掛けているMUKAIBIのWebサイトです。' },
+      { hid: 'og:image', property: 'og:image', content: '/ogp.png' },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:site', content: '_mukaibi' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }
     ]
   },
 

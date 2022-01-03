@@ -1,26 +1,59 @@
-.visuallyHidden {
-  position: absolute;
-  top: 0;
-  left: 0;
-  white-space: nowrap;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  border: 0;
-  padding: 0;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  margin: -1px;
+// .visuallyHidden {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   white-space: nowrap;
+//   width: 1px;
+//   height: 1px;
+//   overflow: hidden;
+//   border: 0;
+//   padding: 0;
+//   clip: rect(0 0 0 0);
+//   clip-path: inset(50%);
+//   margin: -1px;
+// }
+
+// .container {
+//   max-width: 780px;
+//   width: 90%;
+//   margin-left: auto;
+//   margin-right: auto;
+
+//   border: 1px solid tomato;
+//   &--lg {
+//     max-width: 960px;
+//   }
+// }
+.main {
+  padding-bottom: 2em;
+  background-color: $base-color-secondary;
+  @include mq() {
+    padding-bottom: 4em;
+  }
 }
 
-.container {
-  max-width: 780px;
-  width: 90%;
-  margin-left: auto;
-  margin-right: auto;
+.section {
+  position: relative;
+  &__wrap {
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+  }
+}
 
-  &--lg {
-    max-width: 960px;
+.contents {
+  position: relative;
+  &__wrap {
+    position: relative;
+    max-width: 100%;
+    width: 90%;
+    margin: 0 auto;
+    @include mq() {
+      max-width: 800px;
+    }
+  }
+  dd > a {
+    text-decoration: underline;
   }
 }
 
@@ -46,13 +79,36 @@
   }
 }
 
-.headingPrimary {
+.page-title {
   font-family: $font-marcellus;
-  font-size: fz(40);
+  font-size: rem(40);
+  font-weight: normal;
+  margin: .5em 0;
+  line-height: 1;
+  @include mq() {
+    font-size: rem(100);
+  }
+}
+
+.headline2 {
+  font-family: $font-marcellus;
+  font-size: rem(40);
   font-weight: bold;
-  text-transform: capitalize;
   text-align: center;
   margin-bottom: 1em;
+}
+
+.headline3 {
+  font-size: rem(20);
+  font-weight: bold;
+  margin-bottom: .5em;
+  @include mq() {
+    font-size: rem(24);     
+  }
+}
+
+.link__text {
+  text-decoration: underline;
 }
 
 .button-area {
@@ -65,10 +121,10 @@
 }
 
 .buttonPrimary {
-  color: $key-color-black;
+  color: $accent-color-primary;
   display: inline-block;
   font-family: $font-marcellus;
-  font-size: fz(18);
+  font-size: rem(18);
   font-weight: bold;
   text-transform: capitalize;
   text-align: center;

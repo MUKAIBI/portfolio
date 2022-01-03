@@ -1,6 +1,6 @@
 <template>
-  <div class="wrapper">
-    <TheHeader class="header" />
+  <div class="container">
+    <TheHeader />
     <main class="main">
       <Nuxt />
     </main>
@@ -9,7 +9,7 @@
 </template>
 
 <style lang="scss" scoped>
-.wrapper {
+#container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -17,7 +17,7 @@
 
 .header {
   position: fixed;
-  z-index: 100;
+  z-index: 1;
 }
 
 .main {

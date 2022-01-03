@@ -1,8 +1,9 @@
+@charset "UTF-8";
 @use 'sass:map';
 @use 'variables' as var;
-//============================================
-//  MIXIN
-//============================================
+
+/* Mixin
+================================================== */
 // Media Queries
 @mixin mq($breakpoint: md, $type: min) {
   @if map.has-key(var.$breakpoints, $breakpoint) {
