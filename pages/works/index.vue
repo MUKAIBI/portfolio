@@ -45,12 +45,13 @@
   list-style: none;
   &__item {
     width: 100%;
+    margin-bottom: 1.5em;
     @include mq() {
       width: calc((100% - 2.5em) / 2);
+      margin-bottom: 3em;
     }
   }
   &__item + &__item {
-    margin-top: 1.5em;
     @include mq() {
       margin: 0;
     }
