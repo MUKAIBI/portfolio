@@ -1,8 +1,8 @@
 <template>
   <div>
-    <section class="section">
+    <section class="section animonItem">
       <div class="section__wrap">
-        <h1 class="page-title">MUKAIBI is a Web designer in Shizuoka.</h1>
+        <h1 class="page-title"><nuxt-link to="/about" class="link__text-accent">MUKAIBI</nuxt-link> is a Web designer in Shizuoka.</h1>
       </div>
     </section>
 
@@ -23,18 +23,30 @@
                     :width="work.thumbnail.width"
                     :height="work.thumbnail.height"
                     :src="work.thumbnail.url"
-                    :alt="work.title"
+                    :alt="work.title" 
+                    loading="lazy"
                   />
                 </picture>
               </div>
               <div class="works__text">
                 <p class="works__name">{{ work.title }}</p>
-                <p class="works__date">
+                <div class="works__date">
                   <time
                     :datetime="work.release"
-                    v-text="$dateFns.format(new Date(work.release), 'yyyy.MM')"
+                    v-text="$dateFns.format(new Date(work.release), 'yyyy')"
                   />
-                </p>
+                  <!-- <span v-for="categoryItem in category" v-bind:key="categoryItem.id">
+                        {{ categoryItem.name }}
+                  </span> -->
+                  <!-- <span>{{ work.category && work.category.name }}</span> -->
+                  <!-- {{ work.category[0] && work.category[0].name }} -->
+                  <!-- 【{{ Object.keys(work['category']).length }}】 -->
+                  <ul class="works__category">
+                    <li v-for="i in Object.keys(work['category']).length" :key="i.category" class="works__category-item">
+                      {{ work.category[i-1] && work.category[i-1].name }}
+                    </li>
+                  </ul>
+                </div>
               </div>
             </nuxt-link>
           </li>
@@ -58,33 +70,75 @@
       margin-bottom: 3em;
     }
   }
-  &__item + &__item {
-    @include mq() {
-      margin: 0;
-    }
-  }
   &__inner {
     display: block;
   }
   &__image {
     margin-bottom: 1em;
+    overflow: hidden;
     img {
       width: 100%;
+      transition: filter .2s ease-in-out;
+    }
+  }
+  &__text {
+    position: relative;
+    z-index: 0;
+    &::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 100%;
+      background-color: $accent-color-secondary;
+      transition: width .2s ease-in-out;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: -1;
     }
   }
   &__name {
     font-weight: bold;
   }
   &__date {
-    font-size: rem(14);
+    font-family: $font-marcellus;
+    font-size: rem(12);
+    display: flex;
+    justify-content: space-between;
+    margin-top: .25em;
+  }
+  &__category {
+    display: flex;
+    text-align: right;
+    &-item {
+      margin-left: .25em;
+      &:not(:last-child)::after {
+        content: "/";
+      }
+    }
   }
   a {
     display: block;
     &:hover {
-      filter: grayscale(100%);
+      img {
+        filter: grayscale(100%);
+      }
+      .works__text::after {
+        width: 100%;
+      }
     }
   }
 }
+
+// @media (prefers-color-scheme: dark) {
+// .works {
+//   a {
+//     &:hover {
+//       color: $text-color-primary;
+//     }
+//   }
+// }
+// }
 </style>
 
 <script>
@@ -92,10 +146,11 @@ export default {
   async asyncData({ $microcms }) {
     const works = await $microcms.get({
       endpoint: 'works',
+      queries: { limit: 10 },
     })
     return {
       works,
     }
-  },
+  }
 }
 </script>

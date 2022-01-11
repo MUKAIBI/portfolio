@@ -1,20 +1,6 @@
 <template>
   <section class="contents">
     <div class="contents__wrap works">
-      <h1 class="headline3">{{ work.title }}</h1>
-      <div class="works__date">
-        <time
-          :datetime="work.release"
-          v-text="$dateFns.format(new Date(work.release), 'yyyy.MM')"
-        />
-        <ul class="works__responsibility">
-          <li
-            v-for="(res, resIndex) in work.responsibility"
-            :key="resIndex"
-            v-text="res"
-          />
-        </ul>
-      </div>
       <div class="works__image">
         <picture>
           <source 
@@ -31,9 +17,67 @@
           />
         </picture>
       </div>
+      <h1 class="headline3">{{ work.title }}</h1>
+      <div class="works__date">
+        <time
+          :datetime="work.release"
+          v-text="$dateFns.format(new Date(work.release), 'yyyy')"
+        />
+        <ul class="works__category">
+          <li v-for="i in Object.keys(work['category']).length" :key="i.category" class="works__category-item">
+            {{ work.category[i-1] && work.category[i-1].name }}
+          </li>
+        </ul>
+      </div>
       <div class="works__text">
         <p>{{ work.overview }}</p>
-        <p class="link__text"><a :href="work.url" target="_blank">{{ work.url }}</a></p>
+        <div class="link__text"><p v-if="work.textlink1"><a :href="work.textlink1" target="_blank">{{ work.textlink1 }}</a></p></div>
+        <div class="link__text"><p v-if="work.textlink2"><a :href="work.textlink2" target="_blank">{{ work.textlink2 }}</a></p></div>
+        <h2 v-if="work.credit" class="headline4">Role</h2>
+        <p v-if="work.credit" class="works__text-block">{{ work.credit }}</p>
+        <h2 v-if="work.technicalnote" class="headline4">Technical notes</h2>
+        <p v-if="work.technicalnote" class="works__text-block">{{ work.technicalnote }}</p>
+      </div>
+      <div class="works__image">
+        <picture v-if="work.img1">
+          <source 
+            :width="work.img1.width"
+            :height="work.img1.height"
+            :srcset="work.img1.url + '?fm=webp'"
+            type="image/webp"
+          >
+          <img
+            :width="work.img1.width"
+            :height="work.img1.height"
+            :src="work.img1.url"
+          />
+        </picture>
+        <picture v-if="work.img2">
+          <source 
+            :width="work.img2.width"
+            :height="work.img2.height"
+            :srcset="work.img2.url + '?fm=webp'"
+            type="image/webp"
+          >
+          <img
+            :width="work.img2.width"
+            :height="work.img2.height"
+            :src="work.img2.url"
+          />
+        </picture>
+        <picture v-if="work.img3">
+          <source 
+            :width="work.img3.width"
+            :height="work.img3.height"
+            :srcset="work.img3.url + '?fm=webp'"
+            type="image/webp"
+          >
+          <img
+            :width="work.img3.width"
+            :height="work.img3.height"
+            :src="work.img3.url"
+          />
+        </picture>
       </div>
     </div>
   </section>
@@ -42,30 +86,31 @@
 <style lang="scss" scoped>
 .works {
   &__image {
-    margin-bottom: 1em;
-    @include mq() {
-      margin-bottom: 2em;
+    img,
+    picture {
+      margin: 1em 0;
+      @include mq() {
+        margin: 1em 0 2em;
+      }
     }
   }
   &__date {
+    font-family: $font-marcellus;
+    font-size: rem(12);
     display: flex;
     justify-content: space-between;
-    font-size: rem(14);
-    margin-bottom: 1em;
+    margin-bottom: 2em;
     @include mq() {
-      margin-bottom: 2em;
+      margin-bottom: 3em;
     }
   }
-  &__responsibility {
+  &__category {
     display: flex;
-    list-style: none;
     text-align: right;
-    li + li {
-      margin-left: .5em;
-      &::before {
+    &-item {
+      margin-left: .25em;
+      &:not(:last-child)::after {
         content: "/";
-        display: inline-block;
-        padding-right: .5em;
       }
     }
   }
@@ -78,6 +123,14 @@
       margin-top: 1em;
     }
   }
+  &__text-block {
+    font-family: $font-marcellus;
+    font-size: rem(12);
+  }
+}
+
+.headline4 {
+  font-family: $font-marcellus;
 }
 </style>
 
@@ -113,7 +166,7 @@ export default {
         {
           hid: 'og:url',
           property: 'og:url',
-          content: 'https://mukaibi.com/works/' + this.work.slug,
+          content: 'https://mukaibi.com/works/' + this.work.id,
         },
         {
           hid: 'og:title',

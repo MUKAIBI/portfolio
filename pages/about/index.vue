@@ -11,27 +11,47 @@
                 <span lang="en">{{ settings.nameEnglish }}</span>
               </p>
               <dl class="profile__item">
-                <dt class="profile__title">技術スタック</dt>
-                <dd>{{ settings.skills }}</dd>
+                <dt class="profile__title">Hobby</dt>
+                <dd>{{ settings.hobby }}</dd>
               </dl>
               <dl class="profile__item">
-                <dt class="profile__title">趣味</dt>
-                <dd>{{ settings.hobby }}</dd>
+                <dt class="profile__title">Skills</dt>
+                <dd class="text__en">{{ settings.skills }}</dd>
               </dl>
             </div>
             <div class="profile__image">
-              <img
-                :width="settings.profileImage.width"
-                :height="settings.profileImage.height"
-                :src="settings.profileImage.url"
-                :alt="settings.name"
-              />
+              <picture>
+                <source 
+                  :width="settings.profileImage.width"
+                  :height="settings.profileImage.heigh"
+                  :srcset="settings.profileImage.url + '?fm=webp'"
+                  type="image/webp"
+                >
+                <img
+                  :width="settings.profileImage.width"
+                  :height="settings.profileImage.heigh"
+                  :src="settings.profileImage.url"
+                  :alt="settings.name" 
+                  loading="lazy"
+                />
+              </picture>
             </div>
           </div>
           <p class="profile__message">{{ settings.message }}</p>
+          <!-- <dl class="profile__item">
+            <dt class="profile__title">Contact</dt>
+            <dd class="link__text"><a href="mailto:info@mukaibi.com">info@mukaibi.com</a></dd>
+          </dl> -->
           <dl class="profile__item">
             <dt class="profile__title">Contact</dt>
-            <dd><a href="mailto:info@mukaibi.com">info@mukaibi.com</a></dd>
+            <dd>
+              <ul class="list__text">
+                <li class="link__text"><a href="mailto:info@mukaibi.com">info@mukaibi.com</a></li>
+                <li v-if="settings.snslink1" class="link__text"><a :href="settings.snslink1" target="_blank">Twitter</a></li>
+                <li v-if="settings.snslink2" class="link__text"><a :href="settings.snslink2" target="_blank">Instagram</a></li>
+                <li v-if="settings.snslink3" class="link__text"><a :href="settings.snslink3" target="_blank">{{ settings.snslink3 }}</a></li>
+              </ul>
+            </dd>
           </dl>
         </div>
       </div>
@@ -47,7 +67,7 @@
     margin-bottom: 0.5em;
     @include mq() {
       flex-direction: row-reverse;
-      justify-content: space-between;
+      justify-content: start;
       margin-bottom: 2em;
     }
   }
@@ -59,6 +79,7 @@
       font-size: rem(24);     
     }
     [lang='en'] {
+      font-family: $font-marcellus;
       font-size: rem(16);
       &::before {
         content: '/';
@@ -73,6 +94,7 @@
     // }
   }
   &__title {
+    font-family: $font-marcellus;
     font-size: rem(18);
     font-weight: bold;
     margin-bottom: 0.4em;
@@ -81,8 +103,8 @@
     // }
   }
   &__image {
-    width: 100%;
-    margin-bottom: 1.75em;
+    width: 70%;
+    margin: 0 auto 1.75em;
     @include mq() {
       width: 30%;
       margin: 0 2em 0 0;
@@ -95,6 +117,11 @@
     margin-bottom: 2em;
     // line-height: 2;
     white-space: pre-wrap;
+  }
+  .text__en,
+  .link__text,
+  .list__text {
+    font-family: $font-marcellus;
   }
 }
 </style>

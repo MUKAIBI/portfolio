@@ -13,6 +13,12 @@
           <li>
             <nuxt-link to="/about" class="global-nav__link">About</nuxt-link>
           </li>
+          <!-- <li class="switch">
+            <label class="switch-label">
+              <input type="checkbox" id="js_mode_toggle">
+              <span class="switch-mode" id="js_rotate"></span>
+            </label>
+          </li> -->
         </ul>
       </nav>
     </div>
@@ -41,7 +47,7 @@ export default {
     justify-content: space-between;
     align-items: center;
     @include mq() {
-      padding: 0 4em;
+      padding: 1em 4em;
     }
   }
   &__logo {
@@ -52,34 +58,54 @@ export default {
     @include mq() {
       font-size: rem(24);
     }
+    a {
+      position: relative;
+      padding: 0.5em 0.25em;
+      z-index: 0;
+      &::after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 100%;
+        background-color: $accent-color-secondary;
+        transition: width .2s ease-in-out;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+      }
+      &:hover {
+        &::after {
+          width: 100%;
+        }
+      }
+    }
   }
 }
 
 .global-nav {
   &__menu {
-    list-style: none;
     display: flex;
+    list-style: none;
   }
   &__link {
     position: relative;
     font-family: $font-marcellus;
     font-weight: bold;
-    line-height: 64px;
     display: inline-block;
-    padding: 0 0.25em;
-    @include mq() {
-      padding: 0 0.75em;
-    }
+    padding: 0.5em;
+    z-index: 0;
     &::after {
       content: '';
       display: block;
       width: 0;
-      height: 2px;
-      background-color: $accent-color-primary;
-      transition: width .15s ease-out;
+      height: 100%;
+      background-color: $accent-color-secondary;
+      transition: width .2s ease-in-out;
       position: absolute;
       left: 0;
-      bottom: 0;
+      top: 0;
+      z-index: -1;
     }
     &:hover {
       &::after {
@@ -91,4 +117,25 @@ export default {
     margin-left: 1rem;
   }
 }
+
+// @media (prefers-color-scheme: dark) {
+// .header {
+//   &__logo {
+//     color: $text-color-dark-primary;
+//     a {
+//       &:hover {
+//         color: $text-color-primary;
+//       }
+//     }
+//   }
+// }
+
+// .global-nav {
+//   &__link {
+//     &:hover {
+//       color: $text-color-primary;
+//     }
+//   }
+// }
+// }
 </style>

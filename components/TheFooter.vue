@@ -21,4 +21,10 @@
     font-size: rem(14);
   }
 }
+
+// @media (prefers-color-scheme: dark) {
+// .footer {
+//   background: $base-color-dark-primary;
+// }
+// }
 </style>

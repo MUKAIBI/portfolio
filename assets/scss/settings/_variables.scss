@@ -17,24 +17,40 @@ $breakpoints: (
 $white: #ffffff;
 $gray-100: #fafafa;
 $gray-200: #e0e0e0;
-// $gray-300: #fafafa;
-// $gray-400: #fafafa;
-// $gray-500: #fafafa;
-// $gray-600: #fafafa;
-// $gray-700: #fafafa;
-// $gray-800: #fafafa;
-// $gray-900: #fafafa;
+$gray-300: #dddddd;
+$gray-400: #cccccc;
+$gray-500: #bbbbbb;
+$gray-600: #aaaaaa;
+$gray-700: #555555;
+$gray-800: #444444;
+$gray-900: #333333;
 $black: #222222;
+$yellow: #fff100;
 
+:root {
+  --base-color-primary: $white;
+  --base-color-secondary: $gray-200;
+  --accent-color-primary: $black;
+  --accent-color-secondary: $yellow;
+  --text-color-primary: $black;
+  --text-color-secondary: $white;
+}
+
+:root[data-theme-mode='dark'] {
+  --base-color-primary: $black;
+}
 
 // Background
 $base-color-primary: $white;
 $base-color-secondary: $gray-200;
+$base-color-dark-primary: $black;
 $accent-color-primary: $black;
+$accent-color-secondary: $yellow;
 
 // Text
 $text-color-primary: $black;
 $text-color-secondary: $white;
+$text-color-dark-primary: $gray-300;
 
 
 // -------------------------------------------
