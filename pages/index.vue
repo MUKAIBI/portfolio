@@ -45,6 +45,12 @@
             </nuxt-link>
           </li>
         </ul>
+
+        <Pagination
+          :pager="pager"
+          :current="Number(page)"
+        />
+
       </div>
     </section>
   </div>
@@ -137,14 +143,21 @@
 
 <script>
 export default {
-  async asyncData({ $microcms }) {
+  async asyncData({ params, $microcms }) {
+    const page = params.p || '1';
+    const limit = 10;
     const works = await $microcms.get({
       endpoint: 'works',
-      queries: { limit: 10 },
-    })
+      queries: {
+        limit: limit,
+        offset: (page - 1) * limit,
+      },
+    });
     return {
       works,
+      page,
+      pager: [...Array(Math.ceil(works.totalCount / limit)).keys()],
     }
-  }
+  },
 }
 </script>

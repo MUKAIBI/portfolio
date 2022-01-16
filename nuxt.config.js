@@ -1,3 +1,6 @@
+import { client } from './utils/microcms';
+const { GET_API_KEY, SERVICE_DOMAIN } = process.env;
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -103,8 +106,49 @@ export default {
     ],
   },
 
+  router: {
+    extendRoutes(routes, resolve) {
+      routes.push({
+        path: '/page/:p',
+        component: resolve(__dirname, 'pages/index.vue'),
+        name: 'page',
+      }),
+      routes.push({
+        path: '/category/:categoryId/page/:id',
+        component: resolve(__dirname, 'pages/index.vue'),
+        name: 'categories',
+      });
+    },
+  },
+
+  generate: {
+    async routes() {
+      const range = (start, end) =>
+        [...Array(end - start + 1)].map((_, i) => start + i);
+      const limit = 10;
+
+      // 一覧のページング
+      const pages = await client
+        .get({
+          endpoint: 'works',
+          queries: {
+            limit: 0,
+          },
+        })
+        .then((res) =>
+          range(1, Math.ceil(res.totalCount / 10)).map((p) => ({
+            route: `/page/${p}`,
+          }))
+        );
+
+      return [
+        ...pages,
+      ];
+    },
+    dir: 'dist',
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    transpile: ['gsap']
   }
 }
