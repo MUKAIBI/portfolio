@@ -33,11 +33,12 @@ export default {
     '~/assets/scss/reset.scss',
     '~/assets/scss/base.scss',
     '~/assets/scss/global.scss',
+    'material-icons/iconfont/material-icons.css',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    // { src: '~/plugins/script.js', ssr: false },
+    { src: '~/plugins/script.js', ssr: false },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -90,6 +91,15 @@ export default {
     gzip: true,
     routes: [
       '/works/nozomibar-first-anniversary-goods',
+      '/works/nozopico/',
+      '/works/nicodosai-11th/',
+      '/works/nicodosai-10th/',
+      '/works/nicodosai-9th/',
+      '/works/nozomicoaching/',
+      '/works/rainbow/',
+      '/works/nicodosai-8th/',
+      '/works/rwd-2016/',
+      '/works/mukaibi/',
     ],
   },
 

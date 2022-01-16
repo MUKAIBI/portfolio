@@ -1,6 +1,5 @@
 // 要素やクラスを指定しておく
 const checkToggle = document.getElementById('js_mode_toggle');
-const rotateIcon = document.getElementById('js_rotate');
 const classLight = 'js-mode-light';
 
 // デバイスがライトモードかどうかチェック
@@ -12,27 +11,19 @@ const keyLocalStorage = 'whike-theme-mode';
 // ローカルストレージの情報を取得
 const localTheme = localStorage.getItem(keyLocalStorage);
 
-// 絵文字を回転させる角度
-let nowRotate = 0;
-
 // ローカルストレージの中身と、端末がライトモードかどうか（ie,edgeには無意味）をチェック
 if(localTheme === 'light') {
   // ローカルストレージの情報が優先
-  rotateInfinite();
   changeMode('light');
 } else if(localTheme === 'dark') {
   changeMode('dark');
 } else if(isLight) {
-  rotateInfinite();
   changeMode('light');
 }
 
 // チェックボックスでの切り替え、選択をローカルストレージに保存
 // モード切替スイッチが変更されたら発動
 checkToggle.addEventListener('change', function(e) {
-  // 絵文字大回転
-  rotateInfinite();
-
   // チェックされたらライトモード、されなければダークモードにし、ローカルストレージにどちらを選んだか保存する
   if(e.target.checked) {
     changeMode('light');
@@ -57,13 +48,4 @@ function changeMode(mode) {
     document.documentElement.setAttribute('data-theme-mode', 'dark');
     checkToggle.checked = false;
   }
-}
-
-/**
- * 月と太陽アイコン無限回転
- * 呼ばれるたびに180度角度が追加されていく
- */
-function rotateInfinite() {
-  nowRotate += 180;
-  rotateIcon.style.transform = 'rotate(' + nowRotate + 'deg)';
 }

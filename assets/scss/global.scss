@@ -187,70 +187,56 @@
 }
 
 /* モード切り替えボタン */
+.switch-label {
+  font-size: rem(24);
+  line-height: 40px;
+}
+
 input[type="checkbox"] {
   display: none;
 }
-.switch {
-  position: fixed;
-  top: .5em;
-  right: .5em;
-  font-size: 60px;
-}
+
 .switch-label {
   cursor: pointer;
+  padding: 0.5em 0.25em;
 }
-.switch-mode {
-  position: absolute;
-  top: -120px;
-  right: -120px;
-  display: block;
-  width: 200px;
-  height: 200px;
-  transform: rotate(0);
-  transition: transform 1s;
-}
-/* 月と太陽を対角線上に設置しておく。
-   設定したspanを回したら太陽がひっくり返ってしまったので、transform scaleで上下反転した */
+
 .switch-mode::before {
-  content: "🌄";
-  position: absolute;
-  right: 0;
-  top: 0;
-  transform: scale(1,-1);
-}
-.switch-mode::after {
-  content: "🌙";
-  position: absolute;
-  left: 0;
-  bottom: 0;
+  font-family: "Material Icons";
+  content: "mode_night";
 }
 
-// @media (prefers-color-scheme: dark) {
-// body {
-//   background: $base-color-dark-primary;
-//   color: $text-color-dark-primary;
-// }
+[data-theme-mode='dark'] {
+  .switch-mode::before {
+    font-family: "Material Icons";
+    content: "light_mode";
+  }
 
-// .main {
-//   background: $base-color-dark-primary;
-// }
+  body {
+    background: $base-color-dark-primary;
+    color: $text-color-dark-primary;
+  }
 
-// .link__text-accent {
-//   color: $text-color-primary;
-//   &:hover {
-//     color: $text-color-dark-primary;
-//   }
-// }
+  .main {
+    background: $base-color-dark-primary;
+  }
 
-// .link__text {
-//   a {
-//     &:hover {
-//       color: $text-color-primary;
-//     }
-//   }
-// }
+  .link__text-accent {
+    color: $text-color-primary;
+    &:hover {
+      color: $text-color-dark-primary;
+    }
+  }
 
-// .headline3 {
-//   border-bottom: 1px solid $gray-700;
-// }
-// }
+  .link__text {
+    a {
+      &:hover {
+        color: $text-color-primary;
+      }
+    }
+  }
+
+  .headline3 {
+    border-bottom: 1px solid $gray-700;
+  }
+}

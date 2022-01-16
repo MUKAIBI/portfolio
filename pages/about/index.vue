@@ -89,18 +89,12 @@
   }
   &__item {
     margin-bottom: 1.5em;
-    // @include mq() {
-    //   margin-bottom: 1em;
-    // }
   }
   &__title {
     font-family: $font-marcellus;
     font-size: rem(18);
     font-weight: bold;
     margin-bottom: 0.4em;
-    // @include mq() {
-    //   margin-bottom: 0.4em;
-    // }
   }
   &__image {
     width: 70%;

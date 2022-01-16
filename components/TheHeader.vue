@@ -13,12 +13,12 @@
           <li>
             <nuxt-link to="/about" class="global-nav__link">About</nuxt-link>
           </li>
-          <!-- <li class="switch">
+          <li class="switch">
             <label class="switch-label">
               <input type="checkbox" id="js_mode_toggle">
-              <span class="switch-mode" id="js_rotate"></span>
+              <span class="switch-mode"></span>
             </label>
-          </li> -->
+          </li>
         </ul>
       </nav>
     </div>
@@ -118,24 +118,24 @@ export default {
   }
 }
 
-// @media (prefers-color-scheme: dark) {
-// .header {
-//   &__logo {
-//     color: $text-color-dark-primary;
-//     a {
-//       &:hover {
-//         color: $text-color-primary;
-//       }
-//     }
-//   }
-// }
+[data-theme-mode='dark'] {
+  .header {
+    &__logo {
+      color: $text-color-dark-primary;
+      a {
+        &:hover {
+          color: $text-color-primary;
+        }
+      }
+    }
+  }
 
-// .global-nav {
-//   &__link {
-//     &:hover {
-//       color: $text-color-primary;
-//     }
-//   }
-// }
-// }
+  .global-nav {
+    &__link {
+      &:hover {
+        color: $text-color-primary;
+      }
+    }
+  }
+}
 </style>

@@ -35,12 +35,6 @@
                     :datetime="work.release"
                     v-text="$dateFns.format(new Date(work.release), 'yyyy')"
                   />
-                  <!-- <span v-for="categoryItem in category" v-bind:key="categoryItem.id">
-                        {{ categoryItem.name }}
-                  </span> -->
-                  <!-- <span>{{ work.category && work.category.name }}</span> -->
-                  <!-- {{ work.category[0] && work.category[0].name }} -->
-                  <!-- 【{{ Object.keys(work['category']).length }}】 -->
                   <ul class="works__category">
                     <li v-for="i in Object.keys(work['category']).length" :key="i.category" class="works__category-item">
                       {{ work.category[i-1] && work.category[i-1].name }}
@@ -130,15 +124,15 @@
   }
 }
 
-// @media (prefers-color-scheme: dark) {
-// .works {
-//   a {
-//     &:hover {
-//       color: $text-color-primary;
-//     }
-//   }
-// }
-// }
+[data-theme-mode='dark'] {
+  .works {
+    a {
+      &:hover {
+        color: $text-color-primary;
+      }
+    }
+  }
+}
 </style>
 
 <script>

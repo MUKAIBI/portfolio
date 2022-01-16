@@ -27,19 +27,6 @@ $gray-900: #333333;
 $black: #222222;
 $yellow: #fff100;
 
-:root {
-  --base-color-primary: $white;
-  --base-color-secondary: $gray-200;
-  --accent-color-primary: $black;
-  --accent-color-secondary: $yellow;
-  --text-color-primary: $black;
-  --text-color-secondary: $white;
-}
-
-:root[data-theme-mode='dark'] {
-  --base-color-primary: $black;
-}
-
 // Background
 $base-color-primary: $white;
 $base-color-secondary: $gray-200;

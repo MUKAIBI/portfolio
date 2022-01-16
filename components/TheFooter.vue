@@ -22,9 +22,9 @@
   }
 }
 
-// @media (prefers-color-scheme: dark) {
-// .footer {
-//   background: $base-color-dark-primary;
-// }
-// }
+[data-theme-mode='dark'] {
+  .footer {
+    background: $base-color-dark-primary;
+  }
+}
 </style>

@@ -117,15 +117,15 @@
   }
 }
 
-// @media (prefers-color-scheme: dark) {
-// .works {
-//   a {
-//     &:hover {
-//       color: $text-color-primary;
-//     }
-//   }
-// }
-// }
+[data-theme-mode='dark'] {
+  .works {
+    a {
+      &:hover {
+        color: $text-color-primary;
+      }
+    }
+  }
+}
 </style>
 
 <script>
